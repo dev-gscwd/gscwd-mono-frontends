@@ -1,4 +1,4 @@
-import { autoUpdate, offset, shift, size, useFloating } from '@floating-ui/react-dom-interactions';
+import { autoUpdate, FloatingPortal, offset, shift, size, useFloating } from '@floating-ui/react-dom-interactions';
 import { Listbox } from '@headlessui/react';
 import { AnimatePresence, m, LazyMotion, domAnimation } from 'framer-motion';
 import { Fragment, FunctionComponent } from 'react';
@@ -18,7 +18,7 @@ type SelectProps<T> = {
 };
 
 export const Select = <T extends object>({ data, listDef, initial, onSelect }: SelectProps<T>) => {
-  const { key, render, disable } = listDef;
+  const { key, render, disable = () => false } = listDef;
 
   const { x, y, reference, floating, strategy } = useFloating({
     whileElementsMounted: autoUpdate,
@@ -51,58 +51,56 @@ export const Select = <T extends object>({ data, listDef, initial, onSelect }: S
               }}
             </Listbox.Button>
 
-            <LazyMotion features={domAnimation}>
-              <AnimatePresence>
-                {open && (
-                  <m.div
-                    initial={{ opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <Listbox.Options
-                      static
-                      ref={floating}
-                      as="div"
-                      style={{ position: strategy, top: y ?? 0, left: x ?? 0 }}
-                      className={listOptionsClass()}
+            <FloatingPortal id="select-list-portal">
+              <LazyMotion features={domAnimation}>
+                <AnimatePresence>
+                  {open && (
+                    <m.div
+                      initial={{ opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.15 }}
                     >
-                      <ul className={ulClass()} role="listbox">
-                        {data.map((listItem: T, index: number) => {
-                          /**
-                           *  check if disable item function is defined
-                           *
-                           *  assign the returned value of the function to the disabled prop
-                           *
-                           *  if disable item function is not supplied, return false by default
-                           */
-                          const isDisabled = disable ? disable(listItem) : false;
-
-                          return (
-                            <Listbox.Option key={index} value={listItem} as={Fragment} disabled={isDisabled}>
-                              {(state) => {
-                                /**
-                                 *  set the on select prop to return the value of the selected list item
-                                 *
-                                 *  if on select function is not defined, call a function that returns null
-                                 *
-                                 *  render the item in the DOM based on user defined element (or just a plain string)
-                                 */
-                                return (
-                                  <li onClick={onSelect ? () => onSelect(listItem) : () => null}>
-                                    {render(listItem, state)}
-                                  </li>
-                                );
-                              }}
-                            </Listbox.Option>
-                          );
-                        })}
-                      </ul>
-                    </Listbox.Options>
-                  </m.div>
-                )}
-              </AnimatePresence>
-            </LazyMotion>
+                      <Listbox.Options
+                        static
+                        ref={floating}
+                        as="div"
+                        style={{ position: strategy, top: y ?? 0, left: x ?? 0 }}
+                        className={listOptionsClass()}
+                      >
+                        <ul className={ulClass()} role="listbox">
+                          {data.map((listItem: T, index: number) => {
+                            return (
+                              <Listbox.Option
+                                key={index}
+                                value={listItem}
+                                as={Fragment}
+                                disabled={disable(listItem, index)}
+                              >
+                                {(state) => {
+                                  /**
+                                   *  set the on select prop to return the value of the selected list item
+                                   *
+                                   *  if on select function is not defined, call a function that returns null
+                                   *
+                                   *  render the item in the DOM based on user defined element (or just a plain string)
+                                   */
+                                  return (
+                                    <li onClick={onSelect ? () => onSelect(listItem) : () => null}>
+                                      {render(listItem, state)}
+                                    </li>
+                                  );
+                                }}
+                              </Listbox.Option>
+                            );
+                          })}
+                        </ul>
+                      </Listbox.Options>
+                    </m.div>
+                  )}
+                </AnimatePresence>
+              </LazyMotion>
+            </FloatingPortal>
           </>
         )}
       </Listbox>

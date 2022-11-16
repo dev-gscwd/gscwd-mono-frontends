@@ -20,19 +20,19 @@ export const menuRenderer = {
   /**
    *  Renders a menu item with a user defined menu item component
    */
-  custom: (customMenu: JSX.Element) => customMenu,
+  custom: (customMenuItem: JSX.Element) => customMenuItem,
 };
 
 export type MenuDef<T> = {
   /**
    *  Render the menu item in the DOM
    */
-  render: (menuItem: T | string, state: MenuListState) => JSX.Element | string;
+  render: (menuItem: T, state: MenuListState, index?: number) => JSX.Element | string;
 
   /**
    *  Define a menu item that is supposed to be disabled
    */
-  disable?: (menuItem: T | string) => boolean;
+  disable?: (menuItem: T, index: number) => boolean;
 };
 
 /**

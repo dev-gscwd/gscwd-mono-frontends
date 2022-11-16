@@ -36,7 +36,7 @@ export const SelectItemWithAvatar: FunctionComponent<SelectItemWithAvatarProps> 
       <div className={withAvtr.listClass(state)}>
         <div>
           <h3 className={withAvtr.headingClass()}>{heading}</h3>
-          <p className={withAvtr.subheadingClass()}>{subheading}</p>
+          <p className={withAvtr.subheadingClass(state)}>{subheading}</p>
         </div>
       </div>
     </div>

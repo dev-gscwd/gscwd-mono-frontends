@@ -12,7 +12,7 @@ export const listOptionsClass = () => {
 };
 
 export const ulClass = () => {
-  return cls('max-h-80 overflow-y-auto');
+  return cls('max-h-80 overflow-y-auto overflow-x-hidden');
 };
 
 export const simpleListItemClass = (state: ListState | undefined) => {
@@ -46,7 +46,7 @@ export const withAvtr = {
 
   listClass: ({ disabled }: ListState) => {
     return cls('mb-1 flex items-center justify-between w-full', {
-      'text-gray-400': disabled,
+      'text-gray-300': disabled,
       'text-gray-600': !disabled,
     });
   },
@@ -55,7 +55,10 @@ export const withAvtr = {
     return cls('font-medium truncate');
   },
 
-  subheadingClass: () => {
-    return cls('text-sm');
+  subheadingClass: ({ disabled }: ListState) => {
+    return cls('text-sm', {
+      'text-gray-300': disabled,
+      'text-gray-500': !disabled,
+    });
   },
 };

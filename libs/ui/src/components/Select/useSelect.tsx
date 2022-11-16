@@ -1,10 +1,9 @@
-import React from 'react';
 import { ListState, SelectItemSimple, SelectItemWithAvatar } from './SelectItem';
 
 export type ListDef<T> = {
   key: keyof T;
   render: (item: T, state: ListState) => JSX.Element;
-  disable?: (item: T) => boolean;
+  disable?: (item: T, index: number) => boolean;
 };
 
 export type ListWithAvatar = {

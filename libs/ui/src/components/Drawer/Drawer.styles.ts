@@ -11,7 +11,7 @@ export const panelContainerClass = () => {
 
 export const panelClass = ({ size, className }: DrawerProps) => {
   return cls(className, {
-    'bg-white pointer-events-auto': true,
+    'bg-white pointer-events-auto overflow-y-auto': true,
     'w-[24rem]': size === 'sm',
     'w-[28rem]': size === 'md',
     'w-[32rem]': size === 'lg',
@@ -21,7 +21,7 @@ export const panelClass = ({ size, className }: DrawerProps) => {
 };
 
 export const childrenContainer = () => {
-  return cls('flex h-full flex-col bg-white shadow-lg shadow-slate-200');
+  return cls('flex h-full flex-col');
 };
 
 export const bodyClass = (className: string | undefined) => {

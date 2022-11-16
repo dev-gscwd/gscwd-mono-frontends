@@ -1,7 +1,7 @@
-import { flip, offset, Placement, shift, useFloating } from '@floating-ui/react-dom-interactions';
+import { flip, FloatingPortal, offset, Placement, shift, useFloating } from '@floating-ui/react-dom-interactions';
 import { Menu } from '@headlessui/react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Fragment, ReactNode } from 'react';
+import { AnimatePresence, domAnimation, LazyMotion, m } from 'framer-motion';
+import { ReactNode } from 'react';
 import { ListState } from '../Select/SelectItem';
 import { menuContainerClass } from './Dropdown.styles';
 import { MenuDef } from './useDropdown';
@@ -15,25 +15,24 @@ type DropdownProps<T> = {
   menuDef: MenuDef<T>;
   placement?: Placement;
   offsetValue?: number;
-  onSelect?: (menuItem: T) => void;
+  onSelect?: (menuItem: T, index: number) => void;
 };
 
-export const Dropdown = <T extends object | string>({
-  className,
-  children,
-  data,
-  menuDef,
-  onSelect,
-  placement,
-  offsetValue = 0,
-}: DropdownProps<T>) => {
+export const Dropdown = <T extends object | string>(props: DropdownProps<T>) => {
+  // deconstruct props object
+  const { className, children, data, menuDef, onSelect = () => null, placement = 'bottom', offsetValue = 10 } = props;
+
+  // deconstruct menu def object
+  const { render, disable = () => false } = menuDef;
+
   // invoke floating ui to handle menu options container
   const { x, y, reference, floating, strategy } = useFloating({
+    // calculated placement of the float ui
     placement,
+
+    // additional functions for positioning the menu
     middleware: [offset(offsetValue), flip(), shift({ padding: 5 })],
   });
-
-  const { render, disable } = menuDef;
 
   return (
     <Menu as="div">
@@ -43,46 +42,38 @@ export const Dropdown = <T extends object | string>({
             {children}
           </Menu.Button>
 
-          <AnimatePresence>
-            {open && (
-              <motion.div
-              // TODO initialize animation for this component
-              // initial={{ opacity: 0, y: y ? y + offsetValue : 0 }}
-              // animate={{ opacity: 1, y: y ?? 0 }}
-              // exit={{ opacity: 0 }}
-              >
-                <Menu.Items
-                  ref={floating}
-                  as="ul"
-                  static
-                  className={menuContainerClass()}
-                  style={{ position: 'fixed', top: y ?? 0, left: x ?? 0 }}
-                >
-                  {data.map((menu, index) => {
-                    const isDisabled = disable ? disable(menu) : false;
-
-                    return (
-                      <Menu.Item
-                        as="li"
-                        disabled={isDisabled}
-                        key={index}
-                        onClick={onSelect ? () => onSelect(menu) : () => null}
-                      >
-                        {({ active, disabled }) => <>{render(menu, { active, disabled })}</>}
-                      </Menu.Item>
-                    );
-                  })}
-                </Menu.Items>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <FloatingPortal id="dropdown-menu-portal">
+            <LazyMotion features={domAnimation}>
+              <AnimatePresence>
+                {open && (
+                  <m.div
+                    ref={floating}
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10, transition: { duration: 0.25 } }}
+                    style={{ position: strategy, top: y ?? 0, left: x ?? 0 }}
+                  >
+                    <Menu.Items as="ul" static className={menuContainerClass()}>
+                      {data.map((menuItem, index) => {
+                        return (
+                          <Menu.Item
+                            as="li"
+                            key={index}
+                            disabled={disable(menuItem, index)}
+                            onClick={() => onSelect(menuItem, index)}
+                          >
+                            {(state) => <>{render(menuItem, state, index)}</>}
+                          </Menu.Item>
+                        );
+                      })}
+                    </Menu.Items>
+                  </m.div>
+                )}
+              </AnimatePresence>
+            </LazyMotion>
+          </FloatingPortal>
         </>
       )}
     </Menu>
   );
-};
-
-Dropdown.defaultProps = {
-  placement: 'bottom',
-  offsetValue: 10,
 };

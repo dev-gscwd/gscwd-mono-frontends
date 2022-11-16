@@ -15,9 +15,9 @@ export const menu = {
   },
 
   withIconMenuContainerClass: ({ active, disabled }: MenuListState) => {
-    return cls('flex items-center gap-3 p-2 rounded transition-colors duration-75 ease-in-out', {
+    return cls('py-2 pl-3 pr-5 flex items-center gap-4 rounded transition-colors duration-75 ease-in-out', {
       'bg-slate-100': active && !disabled,
-      'text-gray-400 cursor-default': disabled,
+      'text-gray-300 cursor-default': disabled,
       'text-gray-600 cursor-pointer': !disabled,
     });
   },
