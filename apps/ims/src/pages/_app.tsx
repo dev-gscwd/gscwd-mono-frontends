@@ -2,6 +2,7 @@ import '../../styles/tailwind.css';
 import '../../styles/custom.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { PageWrapper, MainWrapper, AsideWrapper, NavWrapper } from '@frontends/ui';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -9,9 +10,10 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome!</title>
       </Head>
-      <main className="overflow-x-hidden">
+
+      <PageWrapper>
         <Component {...pageProps} />
-      </main>
+      </PageWrapper>
     </>
   );
 }

@@ -28,7 +28,7 @@ export default function MyDialog() {
 
   return (
     <>
-      <Modal open={isOpen} setOpen={setIsOpen} size="sm" steady>
+      <Modal open={isOpen} setOpen={setIsOpen} size="sm" fixedHeight={false}>
         <Modal.Header className="pt-2">
           <div className="flex items-center gap-5">
             <div>
@@ -48,12 +48,12 @@ export default function MyDialog() {
             dignissimos distinctio impedit ut officia iste repellat.
           </p>
         </Modal.Body>
-        <Modal.Footer className="flex justify-end">
+        {/* <Modal.Footer className="flex justify-end">
           <Button onClick={() => setIsOpen(false)}>Confirm</Button>
-        </Modal.Footer>
+        </Modal.Footer> */}
       </Modal>
 
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="h-full flex items-center justify-center">
         <Button onClick={() => setIsOpen(true)}>Open</Button>
       </div>
     </>

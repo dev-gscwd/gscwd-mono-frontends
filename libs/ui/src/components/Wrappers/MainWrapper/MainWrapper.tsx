@@ -5,5 +5,5 @@ type MainWrapperProps = {
 };
 
 export const MainWrapper: FunctionComponent<MainWrapperProps> = ({ children }) => {
-  return <main className="pl-64 h-full w-full overflow-y-auto bg-transparent pt-16">{children}</main>;
+  return <main className="pl-80 h-full w-full overflow-y-auto bg-transparent pt-16">{children}</main>;
 };

@@ -10,11 +10,11 @@ export default function TestNotification() {
   };
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center gap-3">
+    <div className="h-full flex items-center justify-center gap-3">
       <Button onClick={showNotification}>Notify me</Button>
       <Button onClick={() => notify.clearAll()}>Clear all</Button>
 
-      <NotificationController ref={notifRef} position="top-center" />
+      <NotificationController ref={notifRef} position="top-center" duration={500} />
     </div>
   );
 }

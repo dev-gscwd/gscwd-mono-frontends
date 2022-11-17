@@ -38,7 +38,7 @@ export default function TooltipTest() {
         </div>
       </Tooltip>
 
-      <div className="h-screen w-screen flex items-center justify-center">
+      <div className="flex items-center justify-center">
         <TooltipAnchor state={state}>
           <a href="#" className="hover:underline hover:underline-offset-2">
             Hover me

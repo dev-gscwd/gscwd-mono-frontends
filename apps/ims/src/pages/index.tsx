@@ -47,7 +47,7 @@ export default function Index() {
 
   return (
     <>
-      <div className="h-screen w-screen flex justify-center pt-40 gap-3 px-20 py-3">
+      <div className="flex justify-center pt-40 gap-3 px-20 py-3">
         <form onSubmit={handleSubmit(login)}>
           <div className={`w-96 mx-auto ${errors.email || errors.password ? 'space-y-4' : 'space-y-1'}`}>
             <div>
@@ -91,7 +91,12 @@ export default function Index() {
                 control={control}
                 defaultValue={genders[0].type}
                 render={({ field: { onChange } }) => (
-                  <Select data={genders} listDef={listDef} onSelect={(item) => onChange(item.type)} />
+                  <Select
+                    data={genders}
+                    listDef={listDef}
+                    onSelect={(item) => onChange(item.type)}
+                    className="w-full"
+                  />
                 )}
               />
             </div>
