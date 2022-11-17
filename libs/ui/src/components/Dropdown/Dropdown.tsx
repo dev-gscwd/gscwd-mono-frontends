@@ -15,12 +15,22 @@ type DropdownProps<T> = {
   menuDef: MenuDef<T>;
   placement?: Placement;
   offsetValue?: number;
+  shiftPaddingValue?: number;
   onSelect?: (menuItem: T, index: number) => void;
 };
 
 export const Dropdown = <T extends object | string>(props: DropdownProps<T>) => {
   // deconstruct props object
-  const { className, children, data, menuDef, onSelect = () => null, placement = 'bottom', offsetValue = 10 } = props;
+  const {
+    className,
+    children,
+    data,
+    menuDef,
+    onSelect = () => null,
+    placement = 'bottom',
+    offsetValue = 10,
+    shiftPaddingValue = 10,
+  } = props;
 
   // deconstruct menu def object
   const { render, disable = () => false } = menuDef;
@@ -31,7 +41,7 @@ export const Dropdown = <T extends object | string>(props: DropdownProps<T>) => 
     placement,
 
     // additional functions for positioning the menu
-    middleware: [offset(offsetValue), flip(), shift({ padding: 5 })],
+    middleware: [offset(offsetValue), flip(), shift({ padding: shiftPaddingValue })],
   });
 
   return (

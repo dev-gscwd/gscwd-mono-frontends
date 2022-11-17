@@ -21,6 +21,7 @@ export const Tooltip = forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement
                 ref={ref}
                 style={{
                   position: state.data.strategy,
+                  zIndex: 500,
                   top: state.data.y ?? 0,
                   left: state.data.x ?? 0,
                   ...props.style,

@@ -2,7 +2,7 @@ import cls from 'classnames';
 import { ModalProps, Props } from './Modal';
 
 export const overlayClass = () => {
-  return cls('fixed inset-0 bg-black/10');
+  return cls('fixed inset-0 bg-black/30');
 };
 
 export const panelContainerClass = ({ size }: ModalProps) => {

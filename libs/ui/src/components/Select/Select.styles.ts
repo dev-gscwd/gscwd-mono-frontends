@@ -1,9 +1,10 @@
 import cls from 'classnames';
 import { ListState } from './SelectItem';
 
-export const listBtnClass = () => {
+export const listBtnClass = (className: string | undefined) => {
   return cls(
-    'px-3 py-2 w-full text-left bg-white flex items-center justify-between text-base border rounded focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100'
+    className,
+    'px-3 py-2 gap-5 text-left bg-white flex items-center justify-between text-base border rounded focus:border-indigo-500 focus:outline-none focus:ring-4 focus:ring-indigo-100'
   );
 };
 

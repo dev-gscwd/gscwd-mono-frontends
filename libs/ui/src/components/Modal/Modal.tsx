@@ -67,6 +67,7 @@ export const Modal: FunctionComponent<ModalProps> & ModalComposition = (props) =
             <div className={panelContainerClass(props)}>
               <Dialog.Panel
                 as={m.div}
+                layout
                 initial={{ y: 50 }}
                 animate={{ y: 0 }}
                 exit={{ y: -100, transition: { duration: 0.25 } }}

@@ -11,13 +11,14 @@ export type RenderList<T> = {
 };
 
 type SelectProps<T> = {
+  className?: string;
   data: T[];
   listDef: ListDef<T>;
   initial?: T;
   onSelect?: (item: T) => void;
 };
 
-export const Select = <T extends object>({ data, listDef, initial, onSelect }: SelectProps<T>) => {
+export const Select = <T extends object>({ className, data, listDef, initial, onSelect }: SelectProps<T>) => {
   const { key, render, disable = () => false } = listDef;
 
   const { x, y, reference, floating, strategy } = useFloating({
@@ -40,7 +41,7 @@ export const Select = <T extends object>({ data, listDef, initial, onSelect }: S
       <Listbox ref={reference} as="div" name="listbox" defaultValue={initial ? initial : data[0]}>
         {({ open }) => (
           <>
-            <Listbox.Button as="button" className={listBtnClass()}>
+            <Listbox.Button as="button" className={listBtnClass(className)}>
               {({ value }) => {
                 return (
                   <>
