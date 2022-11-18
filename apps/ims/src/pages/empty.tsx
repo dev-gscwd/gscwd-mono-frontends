@@ -61,22 +61,15 @@ export default function Empty() {
   const { listDef } = useSelect<Person>({
     key: 'name',
     disable: (item) => item.disabled,
-    render: ({ name, company, avatar }, state) =>
+    render: (item, state) =>
       // listRenderer.simple(name, state),
-      listRenderer.withAvatar({ heading: name, subheading: company, avatarSrc: avatar }, state),
-    // listRenderer.custom(
-    //   <div className={`${state.active ? 'bg-slate-100' : ''} py-2 px-5`}>
-    //     <h3>{name}</h3>
-    //     <p className="text-sm text-gray-500">{company}</p>
-    //   </div>
-    // ),
+      //  listRenderer.withAvatar({ heading: name, subheading: company, avatarSrc: avatar }, state),
+      listRenderer.custom(<CustomListItem state={state} item={item} />),
   });
 
   return (
     <div className="p-5 pr-10">
-      <div className="w-80">
-        <Select data={persons} listDef={listDef} initial={persons[0]} />
-      </div>
+      <Select data={persons} listDef={listDef} initial={persons[0]} className="w-full" />
     </div>
   );
 }

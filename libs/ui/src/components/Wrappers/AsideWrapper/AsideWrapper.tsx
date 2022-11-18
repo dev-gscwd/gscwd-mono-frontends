@@ -6,7 +6,7 @@ type AsideWrapperProps = {
 
 export const AsideWrapper: FunctionComponent<AsideWrapperProps> = ({ children }) => {
   return (
-    <aside className="w-80 fixed top-0 left-0 z-10 shrink-0 h-screen overflow-x-hidden overflow-y-auto bg-white border-r">
+    <aside className="w-64 fixed top-0 left-0 z-10 shrink-0 h-screen overflow-x-hidden overflow-y-auto bg-white border-r">
       {children}
     </aside>
   );

@@ -11,6 +11,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Welcome!</title>
       </Head>
 
+      <AsideWrapper>Sidebar</AsideWrapper>
+
       <PageWrapper>
         <Component {...pageProps} />
       </PageWrapper>
