@@ -39,7 +39,7 @@ export const PopoverMenu: FunctionComponent<PopoverMenuprops> & PopoverMenuCompo
     <Popover as={Fragment}>
       {({ open }) => (
         <>
-          <Popover.Button ref={reference} className={className}>
+          <Popover.Button ref={reference} className={`${className} focus:outline-none`}>
             {display}
           </Popover.Button>
           <AnimatePresence>
@@ -47,9 +47,9 @@ export const PopoverMenu: FunctionComponent<PopoverMenuprops> & PopoverMenuCompo
               <Popover.Panel
                 as={motion.div}
                 static
-                initial={{ opacity: 0, y: -5 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10, transition: { duration: 0.25 } }}
+                exit={{ opacity: 0, y: 10, transition: { duration: 0.25 } }}
                 ref={floating}
                 className={popoverClass(size)}
                 style={{

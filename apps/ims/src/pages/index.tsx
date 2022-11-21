@@ -3,7 +3,21 @@ import { PopoverMenu } from '@frontends/shared-ui';
 export default function Index() {
   return (
     <>
-      <PopoverMenu size="sm" display="Show notifications" placement="bottom-start">
+      <PopoverMenu
+        size="sm"
+        display={
+          <div className="h-10 w-10 rounded hover:bg-gray-200 p-2 transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+              <path
+                fillRule="evenodd"
+                d="M14.615 1.595a.75.75 0 01.359.852L12.982 9.75h7.268a.75.75 0 01.548 1.262l-10.5 11.25a.75.75 0 01-1.272-.71l1.992-7.302H3.75a.75.75 0 01-.548-1.262l10.5-11.25a.75.75 0 01.913-.143z"
+                clipRule="evenodd"
+              />
+            </svg>
+          </div>
+        }
+        placement="bottom-start"
+      >
         <PopoverMenu.Header className="bg-white">
           <div className="flex items-center justify-between">
             <span>Notifications</span>
@@ -29,8 +43,8 @@ export default function Index() {
                 />
               </svg>
               <div>
-                <h3 className="font-medium text-gray-600">Computer</h3>
-                <p className="text-xs text-gray-600">
+                <h3 className="font-medium text-gray-700">Computer</h3>
+                <p className="text-xs text-gray-500">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, placeat.
                 </p>
               </div>
@@ -53,8 +67,8 @@ export default function Index() {
               </svg>
 
               <div>
-                <h3 className="font-medium text-gray-600">CPU Chip</h3>
-                <p className="text-xs text-gray-600">
+                <h3 className="font-medium text-gray-700">CPU Chip</h3>
+                <p className="text-xs text-gray-500">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, placeat.
                 </p>
               </div>
@@ -77,8 +91,8 @@ export default function Index() {
               </svg>
 
               <div>
-                <h3 className="font-medium text-gray-600">Credit Card</h3>
-                <p className="text-xs text-gray-600">
+                <h3 className="font-medium text-gray-700">Credit Card</h3>
+                <p className="text-xs text-gray-500">
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis, placeat.
                 </p>
               </div>
@@ -116,8 +130,6 @@ export default function Index() {
           </div>
         </PopoverMenu.Footer>
       </PopoverMenu>
-
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda, commodi?</p>
     </>
   );
 }
