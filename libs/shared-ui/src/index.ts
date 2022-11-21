@@ -8,6 +8,7 @@ export * from './components/Modal';
 export * from './components/Notification';
 export * from './components/PopoverMenu';
 export * from './components/Select';
+export * from './components/Sidebar';
 export * from './components/Tooltip';
 export * from './components/Wrappers/Aside';
 export * from './components/Wrappers/Main';

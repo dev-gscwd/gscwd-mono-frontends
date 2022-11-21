@@ -41,36 +41,28 @@ export const Modal: FunctionComponent<ModalProps> & ModalComposition = (props) =
 
   const [shake, setShake] = useState(false);
 
-  const onClose = () => {
-    if (steady) {
-      setShake(true);
-    } else {
-      setOpen(false);
-    }
-  };
+  const onClose = () => (steady ? setShake(true) : setOpen(false));
 
   return (
     <LazyMotion features={domAnimation}>
       <AnimatePresence>
         {open && (
-          <Dialog
-            as={m.div}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            open={open}
-            onClose={onClose}
-            className="relative z-50"
-          >
-            <Dialog.Overlay as="div" className={overlayClass()} aria-hidden="true" />
+          <Dialog as="div" open={open} onClose={onClose} className="relative z-50">
+            <Dialog.Overlay
+              as={m.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={overlayClass()}
+              aria-hidden="true"
+            />
 
             <div className={panelContainerClass(props)}>
               <Dialog.Panel
                 as={m.div}
-                layout
-                initial={{ y: 50 }}
-                animate={{ y: 0 }}
-                exit={{ y: -100, transition: { duration: 0.25 } }}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -100, transition: { duration: 0.25 } }}
                 onAnimationEnd={() => setShake(false)}
                 className={panelClass(props, shake)}
               >

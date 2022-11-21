@@ -2,10 +2,11 @@
 import '../../styles/tailwind.css';
 import '../../styles/custom.css';
 
+// library imports
 import { PageContent, Main, Aside } from '@frontends/shared-ui';
 import { AppProps } from 'next/app';
+import { SideNavigation } from '@frontends/ims-ui';
 import PageHeader from 'next/head';
-import { Sidebar } from '../components/Sidebar';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
       <PageContent>
         <Aside>
-          <Sidebar />
+          <SideNavigation />
         </Aside>
 
         <Main>
