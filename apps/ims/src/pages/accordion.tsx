@@ -1,4 +1,4 @@
-import { Accordion } from '@frontends/ui';
+import { Accordion } from '@frontends/shared-ui';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 
 export default function AccordionTest() {

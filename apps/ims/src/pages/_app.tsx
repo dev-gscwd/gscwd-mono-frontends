@@ -2,7 +2,8 @@ import '../../styles/tailwind.css';
 import '../../styles/custom.css';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { PageWrapper, MainWrapper, AsideWrapper, NavWrapper } from '@frontends/ui';
+import { PageContent, Main, Aside, NavWrapper } from '@frontends/shared-ui';
+import SidebarTest from './sidebar';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -11,11 +12,12 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>Welcome!</title>
       </Head>
 
-      <AsideWrapper>Sidebar</AsideWrapper>
-
-      <PageWrapper>
-        <Component {...pageProps} />
-      </PageWrapper>
+      <PageContent>
+        <Aside>This is sidebar</Aside>
+        <Main>
+          <Component {...pageProps} />
+        </Main>
+      </PageContent>
     </>
   );
 }

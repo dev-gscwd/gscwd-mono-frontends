@@ -1,9 +1,9 @@
-import { Button, listRenderer, Modal, PasswordField, Select, TextField, useSelect } from '@frontends/ui';
+import { Button, listRenderer, Modal, PasswordField, Select, TextField, useSelect } from '@frontends/shared-ui';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
-import { ListState } from 'libs/ui/src/components/Select/SelectItem';
+import { ListState } from '@frontends/shared-ui';
 
 type Login = {
   email: string;

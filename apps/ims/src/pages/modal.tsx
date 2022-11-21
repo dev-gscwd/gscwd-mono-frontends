@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, listRenderer, Modal, Select, useSelect } from '@frontends/ui';
+import { Button, listRenderer, Modal, Select, useSelect } from '@frontends/shared-ui';
 import { faker } from '@faker-js/faker';
 
 const people = [
@@ -18,7 +18,7 @@ type Person = {
 };
 
 export default function MyDialog() {
-  let [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const { listDef } = useSelect<Person>({
     key: 'name',

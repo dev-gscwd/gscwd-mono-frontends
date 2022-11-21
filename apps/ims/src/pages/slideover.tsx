@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Button, Drawer, NotificationController, useNotification } from '@frontends/ui';
+import { Button, Drawer, NotificationController, useNotification } from '@frontends/shared-ui';
 import { useRouter } from 'next/router';
 
 export default function MyDialog() {
-  let [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const { notifRef, notify } = useNotification();
 

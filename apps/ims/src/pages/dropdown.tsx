@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
-import { Dropdown, Tooltip, TooltipAnchor } from '@frontends/ui';
-import { menuRenderer, useDropdown } from 'libs/ui/src/components/Dropdown/useDropdown';
-import { useTooltip } from 'libs/ui/src/components/Tooltip/useTooltip';
+import { TooltipAnchor, Dropdown, Tooltip } from '@frontends/shared-ui';
+import { menuRenderer, useDropdown } from '@frontends/shared-ui';
+import { useTooltip } from '@frontends/shared-ui';
 import { FunctionComponent, useState } from 'react';
 
 type MenuWithIcon = {

@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { Button } from '@frontends/ui';
+import { Button } from '@frontends/shared-ui';
 import { motion, MotionConfig } from 'framer-motion';
 import { useState } from 'react';
 

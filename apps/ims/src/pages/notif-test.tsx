@@ -1,4 +1,4 @@
-import { Button, NotificationActions, NotificationController, useNotification } from '@frontends/ui';
+import { Button, NotificationActions, NotificationController, useNotification } from '@frontends/shared-ui';
 import router from 'next/router';
 import { createContext, useEffect } from 'react';
 import { CompWithNofif1 } from '../components/testings/CompWithNotif1';

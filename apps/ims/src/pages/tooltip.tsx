@@ -1,5 +1,5 @@
-import { Tooltip, TooltipAnchor } from '@frontends/ui';
-import { useTooltip } from 'libs/ui/src/components/Tooltip/useTooltip';
+import { Tooltip, TooltipAnchor } from '@frontends/shared-ui';
+import { useTooltip } from '@frontends/shared-ui';
 
 export default function TooltipTest() {
   const state = useTooltip({
@@ -38,7 +38,7 @@ export default function TooltipTest() {
         </div>
       </Tooltip>
 
-      <div className="flex items-center justify-center">
+      <div className="flex items-center h-full justify-center">
         <TooltipAnchor state={state}>
           <a href="#" className="hover:underline hover:underline-offset-2">
             Hover me

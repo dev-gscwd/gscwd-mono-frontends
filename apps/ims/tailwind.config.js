@@ -3,7 +3,7 @@ module.exports = {
   content: [
     'apps/ims/src/pages/**/*.{js,jsx,ts,tsx}',
     'apps/ims/src/components/**/*.{js,jsx,ts,tsx}',
-    'libs/ui/src/**/!(*.stories|*.spec).{ts,tsx,jsx,js,html}',
+    'libs/shared-ui/src/**/!(*.stories|*.spec).{ts,tsx,jsx,js,html}',
   ],
   theme: {
     extend: {},

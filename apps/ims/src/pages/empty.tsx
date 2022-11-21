@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { listRenderer, Select, useSelect } from '@frontends/ui';
-import { ListState } from 'libs/ui/src/components/Select/SelectItem';
+import { listRenderer, Select, useSelect } from '@frontends/shared-ui';
+import { ListState } from '@frontends/shared-ui';
 import { FunctionComponent, useState } from 'react';
 
 const people = [

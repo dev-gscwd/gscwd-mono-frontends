@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker';
-import { Button, Tooltip, TooltipAnchor } from '@frontends/ui';
-import { useTooltip } from 'libs/ui/src/components/Tooltip/useTooltip';
+import { Button, Tooltip, TooltipAnchor } from '@frontends/shared-ui';
+import { useTooltip } from '@frontends/shared-ui';
 import { useEffect, useState } from 'react';
 
 export default function Popper() {

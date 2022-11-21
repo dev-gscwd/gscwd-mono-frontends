@@ -1,4 +1,4 @@
-import { Button, NotificationController, useNotification } from '@frontends/ui';
+import { Button, NotificationController, useNotification } from '@frontends/shared-ui';
 import { faker } from '@faker-js/faker';
 import { useRouter } from 'next/router';
 

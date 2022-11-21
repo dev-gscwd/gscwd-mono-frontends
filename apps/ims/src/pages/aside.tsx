@@ -1,4 +1,4 @@
-import { Button } from '@frontends/ui';
+import { Button } from '@frontends/shared-ui';
 
 export default function AsideTest() {
   return (
