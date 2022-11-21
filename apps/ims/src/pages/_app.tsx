@@ -1,21 +1,28 @@
+// tailwind css and custom css
 import '../../styles/tailwind.css';
 import '../../styles/custom.css';
+
+import { PageContent, Main, Aside } from '@frontends/shared-ui';
 import { AppProps } from 'next/app';
-import Head from 'next/head';
-import { PageContent, Main, Aside, NavWrapper } from '@frontends/shared-ui';
-import SidebarTest from './sidebar';
+import PageHeader from 'next/head';
+import { Sidebar } from '../components/Sidebar';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <Head>
+      <PageHeader>
         <title>Welcome!</title>
-      </Head>
+      </PageHeader>
 
       <PageContent>
-        <Aside>This is sidebar</Aside>
+        <Aside>
+          <Sidebar />
+        </Aside>
+
         <Main>
-          <Component {...pageProps} />
+          <div className="p-2">
+            <Component {...pageProps} />
+          </div>
         </Main>
       </PageContent>
     </>

@@ -5,5 +5,5 @@ type PageContentProps = {
 };
 
 export const PageContent: FunctionComponent<PageContentProps> = ({ children }) => {
-  return <div className="h-screen w-screen overflow-x-hidden bg-slate-50/50 flex">{children}</div>;
+  return <div className="h-screen w-screen overflow-x-hidden bg-slate-100 flex">{children}</div>;
 };
