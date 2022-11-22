@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'next/router';
 
 // set paths for this app
-const paths = ['/login', '/about', '/contacts', '/terminal', '/cube'];
+const paths = ['/login', '/about', '/contacts', '/table', '/cube'];
 
 export const SideNavigation: FunctionComponent = () => {
   // access context from aside to control its collapse state
@@ -65,7 +65,7 @@ export const SideNavigation: FunctionComponent = () => {
           />
         </ul>
       </Sidebar.Content>
-      <Sidebar.Footer className="p-5">footer</Sidebar.Footer>
+      {/* <Sidebar.Footer className="p-5">footer</Sidebar.Footer> */}
     </Sidebar>
   );
 };

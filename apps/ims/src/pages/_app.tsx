@@ -20,10 +20,8 @@ export default function App({ Component, pageProps }: AppProps) {
           <SideNavigation />
         </Aside>
 
-        <Main>
-          <div className="p-2">
-            <Component {...pageProps} />
-          </div>
+        <Main className="p-5">
+          <Component {...pageProps} />
         </Main>
       </PageContent>
     </>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { FunctionComponent, ReactNode, useContext } from 'react';
 import { AsideContext } from '../Wrappers/Aside';
@@ -66,11 +66,13 @@ const Item: FunctionComponent<ItemProps> = ({ selected, icon, display, path, cla
     <li className={itemClass(className, selected)}>
       <Link href={path} className={linkClass(collapsed)}>
         {icon}
-        {!collapsed && (
-          <motion.span initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }}>
-            {display}
-          </motion.span>
-        )}
+        <AnimatePresence initial={false}>
+          {!collapsed && (
+            <motion.span initial={{ opacity: 0, x: -100 }} animate={{ opacity: 1, x: 0 }}>
+              {display}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </Link>
     </li>
   );
