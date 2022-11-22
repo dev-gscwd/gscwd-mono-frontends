@@ -11,7 +11,7 @@ import {
 import { useRouter } from 'next/router';
 
 // set paths for this app
-const paths = ['/login', '/about', '/contacts', '/table', '/cube'];
+const paths = ['/login', '/about', '/contacts', '/table', '/'];
 
 export const SideNavigation: FunctionComponent = () => {
   // access context from aside to control its collapse state
@@ -27,6 +27,7 @@ export const SideNavigation: FunctionComponent = () => {
           <OutlineChevronRight className={`${collapsed ? 'rotate-180' : 'rotate-0'} transition-all`} />
         </button>
       </Sidebar.Header>
+
       <Sidebar.Content>
         <ul className="text-sm">
           <Sidebar.Item

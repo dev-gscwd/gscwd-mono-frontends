@@ -78,7 +78,7 @@ export const DataTable = <T extends object>({ data, columns, paginate, onRowClic
               <tr
                 key={row.id}
                 onClick={onRowClick ? () => onRowClick(row) : () => null}
-                className="odd:bg-slate-50 hover:bg-slate-100 cursor-pointer text-gray-500 text-sm"
+                className="odd:bg-slate-50 hover:bg-slate-100 cursor-pointer text-gray-600 text-sm"
               >
                 {row.getVisibleCells().map((cell) => {
                   return (
