@@ -84,7 +84,6 @@ export default function Index() {
                 )}
               />
             </div>
-
             <div>
               <Controller
                 name="gender"
@@ -101,9 +100,8 @@ export default function Index() {
               />
             </div>
           </div>
-
           <div className="flex items-center justify-start mt-5">
-            <Button type="submit" className="w-fulls">
+            <Button type="submit" className="w-full">
               Sign in
             </Button>
           </div>
