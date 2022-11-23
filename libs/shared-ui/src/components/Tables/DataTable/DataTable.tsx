@@ -45,7 +45,7 @@ export const DataTable = <T extends object>({ data, columns, paginate, onRowClic
   return (
     <div className="bg-white rounded-md overflow-y-auto h-full w-full flex flex-col">
       <table className="w-full text-left table-auto whitespace-no-wrap bg-white flex-1">
-        <thead className="text-sm text-gray-600 uppercase sticky top-0 bg-white border-b border-t-slate-200 z-30">
+        <thead className="text-sm text-gray-600 sticky top-0 bg-white border-b z-30">
           {table.getHeaderGroups().map((group) => {
             return (
               <tr key={group.id}>
