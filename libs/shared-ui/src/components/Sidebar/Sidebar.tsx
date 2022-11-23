@@ -64,7 +64,7 @@ const Item: FunctionComponent<ItemProps> = ({ selected, icon, display, path, cla
 
   return (
     <li className={itemClass(className, selected)}>
-      <Link href={path} className={linkClass(collapsed)}>
+      <Link href={path} className={linkClass(collapsed, selected)}>
         {icon}
         <AnimatePresence initial={false}>
           {!collapsed && (

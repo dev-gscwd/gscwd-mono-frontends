@@ -29,7 +29,7 @@ export const SideNavigation: FunctionComponent = () => {
       </Sidebar.Header>
 
       <Sidebar.Content>
-        <ul className="text-sm">
+        <ul className="text-sm space-y-1">
           <Sidebar.Item
             selected={router.pathname === paths[0] ? true : false}
             display="Dashboard"

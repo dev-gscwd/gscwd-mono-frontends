@@ -13,7 +13,7 @@ type AsideProps = {
 export const AsideContext = createContext({} as AsideContextState);
 
 export const Aside: FunctionComponent<AsideProps> = ({ children }) => {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <AsideContext.Provider value={{ collapsed, setCollapsed }}>
