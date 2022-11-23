@@ -6,15 +6,23 @@ type NotificationPortal = {
 };
 
 export const notifPortalClass = ({ position, gutter }: NotificationPortal) => {
-  return cls('fixed z-50 py-3', {
-    'top-0 right-0 w-[28rem] pr-3 flex flex-col items-end': position === 'top-right' || position === undefined,
-    'bottom-0 right-0 w-[28rem] pr-3 flex flex-col items-end': position === 'bottom-right',
-    'flex flex-col items-center w-full top-0': position === 'top-center',
-    'flex flex-col items-center w-full bottom-0': position === 'bottom-center',
+  return cls('fixed z-50 py-3 flex flex-col', {
+    'right-0 w-[28rem] pr-3 items-end': position === 'top-right' || position === 'bottom-right',
+
+    'items-center w-full': position === 'top-center' || position === 'bottom-center',
+
+    'top-0': position === 'top-center' || position === 'top-right',
+
+    'bottom-0': position === 'bottom-right' || position === 'bottom-center',
+
     'space-y-1': gutter === 1,
+
     'space-y-2': gutter === 2,
-    'space-y-3': gutter === 3 || gutter === undefined,
+
+    'space-y-3': gutter === 3,
+
     'space-y-4': gutter === 4,
+
     'space-y-5': gutter === 5,
   });
 };

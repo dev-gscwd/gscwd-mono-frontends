@@ -1,6 +1,6 @@
 import { FloatingPortal } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
-import { forwardRef, HTMLAttributes, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, HTMLAttributes, useCallback, useEffect, useImperativeHandle, useState } from 'react';
 import { notifControllerClass, notifPortalClass } from './Notification.styles';
 
 export type Notification = {
@@ -55,36 +55,37 @@ export const NotificationController = forwardRef<NotificationControllerHandle, N
       setNotifs(newNotifs);
     };
 
-    const removeNotification = (notificationId: string) => {
-      // create a copy of notifs array
-      const newNotifs = [...notifs];
+    const removeNotification = useCallback(
+      (notificationId: string) => {
+        // create a copy of notifs array
+        const newNotifs = [...notifs];
 
-      // loop through the new array
-      newNotifs.map((notif, index) => {
-        // check if current notif's id is equal to the passed notif id
-        if (notif.id === notificationId) {
-          // remove notif at current index
-          newNotifs.splice(index, 1);
+        newNotifs.map((notif, index) => {
+          // check if current notif's id is equal to the passed notif id
+          if (notif.id === notificationId) {
+            // remove notif at current index
+            newNotifs.splice(index, 1);
 
-          // set new value for notifs arrat
-          setNotifs(newNotifs);
+            // set new value for notifs arrat
+            setNotifs(newNotifs);
+          }
 
-          // break away from the loop
-          return;
-        }
-      });
-    };
+          return newNotifs;
+        });
+      },
+      [notifs]
+    );
 
     useEffect(() => {
       // dismiss the current notification
       if (notification) removeNotification(notification.id);
 
       // effect dependencies
-    }, [notification, setNotifs]);
+    }, [removeNotification, notification, setNotifs]);
 
     useEffect(() => {
       // initialize this timer
-      var timer: NodeJS.Timeout;
+      let timer: NodeJS.Timeout;
 
       // check all conditions
       if (!hovering && autoClose && notifs.length !== 0) {
@@ -99,7 +100,7 @@ export const NotificationController = forwardRef<NotificationControllerHandle, N
       return () => clearTimeout(timer);
 
       // effect dependencies
-    }, [hovering, notifs, setNotification]);
+    }, [hovering, notifs, setNotification, autoClose, duration]);
 
     return (
       <FloatingPortal id="notification-portal">

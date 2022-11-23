@@ -14,7 +14,7 @@ export const buttonClass = ({ className, variant, size, disabled }: ButtonProps)
     'font-semibold tracking-wide': true,
 
     // default shape and focus state
-    'rounded whitespace-nowrap focus:outline-none focus:ring-4': true,
+    'py-2 rounded whitespace-nowrap focus:outline-none focus:ring-4': true,
 
     /**
      *  *non disabled states
@@ -86,12 +86,12 @@ export const buttonClass = ({ className, variant, size, disabled }: ButtonProps)
      */
 
     // small button size
-    'px-3 py-2 text-xs': size === 'sm',
+    'px-3 text-xs': size === 'sm',
 
     // medium button size
-    'px-4 py-2 text-sm': size === 'md',
+    'px-4 text-sm': size === 'md',
 
     // large button size
-    'px-5 py-2 text-lg': size === 'lg',
+    'px-5 text-lg': size === 'lg',
   });
 };

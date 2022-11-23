@@ -1,12 +1,15 @@
-import { Button, Drawer, Modal } from '@frontends/shared-ui';
+import { Button, Drawer, Modal, NotificationController, useNotification } from '@frontends/shared-ui';
 import { useState } from 'react';
 import { faker } from '@faker-js/faker';
 
 export default function Login() {
   const [open, setOpen] = useState(false);
+
+  const { notifRef, notify } = useNotification();
+
   return (
     <>
-      <Modal open={open} setOpen={setOpen}>
+      {/* <Modal open={open} setOpen={setOpen}>
         <Modal.Header className="flex items-center gap-4">
           <img src={faker.image.avatar()} className="h-12 w-12 rounded-full ring-4 ring-gray-200" />
           <div>
@@ -24,13 +27,27 @@ export default function Login() {
             perferendis! Delectus, fuga.
           </p>
         </Modal.Body>
-      </Modal>
+      </Modal> */}
       {/* 
       <Drawer open={open} setOpen={setOpen} size="sm">
         <Drawer.Body>Body</Drawer.Body>
       </Drawer> */}
+
+      <NotificationController ref={notifRef} position="top-right" />
+
       <div className="flex h-full justify-center items-center">
-        <Button onClick={() => setOpen(true)}>Open</Button>
+        <Button
+          onClick={() => {
+            const notification = notify.custom(
+              <div className="bg-white p-3 rounded-md">
+                <p>Notification</p>
+                <button onClick={() => notify.dismiss(notification.id)}>Close</button>
+              </div>
+            );
+          }}
+        >
+          Open
+        </Button>
       </div>
     </>
   );

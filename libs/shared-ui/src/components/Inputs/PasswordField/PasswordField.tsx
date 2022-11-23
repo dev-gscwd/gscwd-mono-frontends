@@ -30,7 +30,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>((p
 
   useEffect(() => {
     // initialize a timer
-    var timer: NodeJS.Timer;
+    let timer: NodeJS.Timer;
 
     // check if user is hovering over the show/hide password toggle button
     if (hovering) timer = setTimeout(() => setShowTooltip(true), 500);

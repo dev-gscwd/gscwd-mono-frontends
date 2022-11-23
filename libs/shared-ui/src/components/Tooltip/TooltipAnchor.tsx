@@ -10,6 +10,7 @@ type TooltipAnchorProps = {
 
 export const TooltipAnchor = forwardRef<HTMLElement, HTMLProps<HTMLElement> & TooltipAnchorProps>(
   ({ state, asChild, children, ...props }, propRef) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const childrenRef = (children as any).ref;
 
     const ref = useMemo(
