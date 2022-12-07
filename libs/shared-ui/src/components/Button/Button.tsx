@@ -4,7 +4,7 @@ import { buttonClass } from './Button.styles';
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode | ReactNode[];
   className?: string;
-  variant?: 'primary' | 'warning' | 'danger';
+  variant?: 'primary' | 'warning' | 'danger' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
   loading?: boolean;
 };

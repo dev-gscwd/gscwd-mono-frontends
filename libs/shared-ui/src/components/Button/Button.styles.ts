@@ -33,6 +33,9 @@ export const buttonClass = ({ className, variant, size, disabled }: ButtonProps)
     // disabled state for primary button
     'bg-indigo-400': disabled && variant === 'primary',
 
+    // disabled state for secondary
+    'bg-slate-400': disabled && variant === 'secondary',
+
     // disabled state for warning
     'bg-orange-400': disabled && variant === 'warning',
 
@@ -51,6 +54,19 @@ export const buttonClass = ({ className, variant, size, disabled }: ButtonProps)
 
     // active state of primary button
     'active:bg-indigo-600 active:shadow-indigo-200': !disabled && variant === 'primary',
+
+    /**
+     * *secondary button states
+     */
+
+    // default state of secondary button
+    'bg-slate-500 focus:ring-slate-100': !disabled && variant === 'secondary',
+
+    // hover state of secondary button
+    'hover:shadow-slate-100': !disabled && variant === 'secondary',
+
+    // active state of secondary button
+    'active:bg-slate-600 active:shadow-slate-200': !disabled && variant === 'secondary',
 
     /**
      *  *warning button states

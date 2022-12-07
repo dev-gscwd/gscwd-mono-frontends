@@ -9,9 +9,10 @@ import {
   OutlineHome,
 } from '@frontends/heroicons-v2';
 import { useRouter } from 'next/router';
+import { HiQueueList, HiRectangleStack } from 'react-icons/hi2';
 
 // set paths for this app
-const paths = ['/login', '/about', '/contacts', '/table', '/cube'];
+const paths = ['/fe', '/fe/items', '/contacts', '/table', '/cube'];
 
 export const SideNavigation: FunctionComponent = () => {
   // access context from aside to control its collapse state
@@ -30,6 +31,30 @@ export const SideNavigation: FunctionComponent = () => {
       <Sidebar.Content>
         <ul className="text-sm">
           <Sidebar.Item
+            selected={router.pathname === paths[0] ? true : false}
+            display="Dashboard"
+            path={paths[0]}
+            icon={<OutlineHome />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[1] ? true : false}
+            display="Bin Card"
+            path={paths[1]}
+            icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[2] ? true : false}
+            display="Items"
+            path={paths[1]}
+            icon={<HiQueueList className="h-[20px] w-[20px]" />}
+          />
+          {/* <Sidebar.Item
+            selected={router.pathname === paths[2] ? true : false}
+            display="Items"
+            path={paths[2]}
+            icon={<HiQueueList className="h-[20px] w-[20px]" />}
+          /> */}
+          {/* <Sidebar.Item
             selected={router.pathname === paths[0] ? true : false}
             display="Dashboard"
             path={paths[0]}
@@ -62,7 +87,7 @@ export const SideNavigation: FunctionComponent = () => {
             display="Packages"
             path={paths[4]}
             icon={<OutlineCube />}
-          />
+          /> */}
         </ul>
       </Sidebar.Content>
       {/* <Sidebar.Footer className="p-5">footer</Sidebar.Footer> */}
