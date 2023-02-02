@@ -1,5 +1,5 @@
 import { FunctionComponent, useContext } from 'react';
-import { AsideContext, Sidebar } from '@frontends/shared-ui';
+import { Accordion, AsideContext, Sidebar } from '@frontends/shared-ui';
 import {
   OutlineCalendar,
   OutlineChevronRight,
@@ -9,10 +9,18 @@ import {
   OutlineHome,
 } from '@frontends/heroicons-v2';
 import { useRouter } from 'next/router';
-import { HiQueueList, HiRectangleStack } from 'react-icons/hi2';
+import { HiQueueList, HiRectangleStack, HiOutlineCog6Tooth } from 'react-icons/hi2';
 
 // set paths for this app
-const paths = ['/fe', '/fe/items', '/contacts', '/table', '/cube'];
+const paths = [
+  '/fe',
+  '/fe/items',
+  '/fe/characteristics',
+  '/fe/classification',
+  '/fe/category',
+  '/fe/specification',
+  '/login',
+];
 
 export const SideNavigation: FunctionComponent = () => {
   // access context from aside to control its collapse state
@@ -38,22 +46,103 @@ export const SideNavigation: FunctionComponent = () => {
           />
           <Sidebar.Item
             selected={router.pathname === paths[1] ? true : false}
-            display="Bin Card"
+            display="Items"
             path={paths[1]}
             icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
           />
           <Sidebar.Item
             selected={router.pathname === paths[2] ? true : false}
-            display="Items"
-            path={paths[1]}
-            icon={<HiQueueList className="h-[20px] w-[20px]" />}
+            display="Characteristics"
+            path={paths[2]}
+            icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[3] ? true : false}
+            display="Classification"
+            path={paths[3]}
+            icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[4] ? true : false}
+            display="Categories"
+            path={paths[4]}
+            icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[5] ? true : false}
+            display="Specifications"
+            path={paths[5]}
+            icon={<HiRectangleStack className="h-[20px] w-[20px]" />}
           />
           {/* <Sidebar.Item
             selected={router.pathname === paths[2] ? true : false}
             display="Items"
             path={paths[2]}
             icon={<HiQueueList className="h-[20px] w-[20px]" />}
+          />
+          <Sidebar.Item
+            selected={router.pathname === paths[3] ? true : false}
+            display="Classification"
+            path={paths[3]}
+            icon={<HiQueueList className="h-[20px] w-[20px]" />}
+          />
+
+          <Sidebar.Item
+            selected={router.pathname === paths[4] ? true : false}
+            display="Category"
+            path={paths[4]}
+            icon={<HiQueueList className="h-[20px] w-[20px]" />}
           /> */}
+
+          {/* <Sidebar.Item
+            selected={router.pathname === paths[6] ? true : false}
+            display="Settings"
+            path={paths[6]}
+            icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+          /> */}
+
+          {/* <Sidebar.Content className="pl-5">
+            <Accordion className="overflow-none">
+              <Accordion.Button>Settings</Accordion.Button>
+              <Accordion.Body>
+                <Sidebar.Item
+                  selected={router.pathname === paths[3] ? true : false}
+                  display="Settings"
+                  path={paths[3]}
+                  icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+                />
+
+                <Sidebar.Item
+                  selected={router.pathname === paths[3] ? true : false}
+                  display="Settings"
+                  path={paths[3]}
+                  icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+                />
+
+                <Sidebar.Item
+                  selected={router.pathname === paths[3] ? true : false}
+                  display="Settings"
+                  path={paths[3]}
+                  icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+                />
+
+                <Sidebar.Item
+                  selected={router.pathname === paths[3] ? true : false}
+                  display="Settings"
+                  path={paths[3]}
+                  icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+                />
+              </Accordion.Body>
+            </Accordion>
+          </Sidebar.Content> */}
+
+          {/* <Sidebar.Item
+            selected={router.pathname === paths[3] ? true : false}
+            display="Classification"
+            path={paths[3]}
+            icon={<HiOutlineCog6Tooth className="h-[20px] w-[20px]" />}
+          /> */}
+
           {/* <Sidebar.Item
             selected={router.pathname === paths[0] ? true : false}
             display="Dashboard"
@@ -86,7 +175,7 @@ export const SideNavigation: FunctionComponent = () => {
             selected={router.pathname === paths[4] ? true : false}
             display="Packages"
             path={paths[4]}
-            icon={<OutlineCube />}
+            icon={<OutlineCube />}..
           /> */}
         </ul>
       </Sidebar.Content>
