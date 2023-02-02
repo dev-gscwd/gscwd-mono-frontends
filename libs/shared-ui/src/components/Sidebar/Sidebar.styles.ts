@@ -7,7 +7,7 @@ export const sidebarClass = (classnames: string | undefined, background: string 
 export const itemClass = (classnames: string | undefined, selected: boolean | undefined) => {
   return cls(classnames, 'w-full hover:bg-slate-700/50 border-l-4 duration-100 ease-in-out transition-all', {
     'border-l-transparent': !selected,
-    'border-l-green-500 bg-slate-700/50': selected,
+    'border-l-slate-400 bg-slate-700/50': selected,
   });
 };
 
