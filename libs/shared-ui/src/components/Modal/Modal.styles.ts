@@ -12,6 +12,12 @@ export const panelContainerClass = ({ size }: ModalProps) => {
   });
 };
 
+export const modalHeaderStyles = (withCloseBtn: boolean | undefined) => {
+  return cls({
+    'flex items-start justify-between': withCloseBtn,
+  });
+};
+
 export const panelClass = ({ size, className, fixedHeight }: ModalProps, shake: boolean) => {
   return cls(className, 'bg-white rounded-md p-5 mx-auto', {
     'animate-shake': shake,
