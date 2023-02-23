@@ -69,7 +69,7 @@ export default function Items({ categories }) {
     { id: 6, desc: 'Pipe, 1/2' },
   ];
 
-  console.log(categories.items);
+  // console.log(categories.items);
 
   return (
     <div className="">
@@ -91,7 +91,7 @@ export default function Items({ categories }) {
           </div>
         </div>
 
-        <DataTable data={categories.items} columns={columns} />
+        {/* <DataTable data={categories.items} columns={columns} /> */}
       </div>
       <Button
         variant="secondary"
@@ -145,15 +145,15 @@ export default function Items({ categories }) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_URL;
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const baseUrl = process.env.NEXT_PUBLIC_URL;
 
-  const category = await axios.get(`${baseUrl}/items/info/categories`, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Content-Type': 'application/json',
-    },
-  });
+//   const category = await axios.get(`${baseUrl}/items/info/categories`, {
+//     headers: {
+//       'Access-Control-Allow-Origin': '*',
+//       'Content-Type': 'application/json',
+//     },
+//   });
 
-  return { props: { categories: category.data } };
-};
+//   return { props: { categories: category.data } };
+// };
